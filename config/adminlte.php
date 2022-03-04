@@ -273,6 +273,11 @@ return [
             'icon' => 'fa-solid fa-list'
         ],
         [
+            'text' => 'usuarios',
+            'url' => '/admin/usuarios',
+            'icon' => 'fa-solid fa-users'
+        ],
+        [
             'text'        => 'paginas',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',

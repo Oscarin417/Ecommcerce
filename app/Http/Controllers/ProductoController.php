@@ -18,8 +18,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate(5);
-        return view('admin.producto.index')->with('productos',$productos);
+        $productos = Producto::all();
+        return response()->json($productos);
+        //return view('admin.producto.index')->with('productos',$productos);
     }
 
     /**
@@ -40,11 +41,17 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        $producto = Producto::create($request->post());
+        return response()->json([
+            'producto' => $producto
+        ]);
+        /*
         $productos = new Producto();
         $productos->nombre = $request->get('nombre');
         $productos->precio = $request->get('precio');
         $productos->cantidad = $request->get('cantidad');
         $productos->descripcion = $request->get('descripcion');
+        $productos->categoria = $request->get('categoria');
         if($request->has('imagen')){
             $imagen = $request->file('imagen');
             $nombreImagen = Str::random(15);
@@ -54,6 +61,7 @@ class ProductoController extends Controller
         }
         $productos->save();
         return redirect('/admin/productos')->with('crear','ok');
+        */
     }
 
     /**
@@ -62,10 +70,13 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Producto $producto)
     {
+        return response()->json($producto);
+        /*
         $producto = Producto::find($id);
         return view('admin.producto.show')->with('producto',$producto);
+        */
     }
 
     /**
@@ -76,8 +87,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        /*
         $producto = Producto::find($id);
         return view('admin.producto.edit')->with('producto',$producto);
+        */
     }
 
     /**
@@ -87,13 +100,18 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Producto $producto)
     {
-        $producto = Producto::find($id);
+        $producto->fill($request->post())->save();
+        return response()->json([
+            'producto' => $producto
+        ]);
+        /*$producto = Producto::find($id);
         $producto->nombre = $request->get('nombre');
         $producto->precio = $request->get('precio');
         $producto->cantidad = $request->get('cantidad');
         $producto->descripcion = $request->get('descripcion');
+        $producto->categoria = $request->get('categoria');
         if($request->has('imagen')){
             $imagen = $request->file('imagen');
             $nombreImagen = Str::random(15);
@@ -102,7 +120,7 @@ class ProductoController extends Controller
             $producto->imagen = $imagenCargada;
         }
         $producto->save();
-        return redirect('/admin/productos')->with('editar','ok');
+        return redirect('/admin/productos')->with('editar','ok');*/
     }
 
     /**
@@ -111,10 +129,14 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
-        $producto = Producto::find($id);
         $producto->delete();
-        return redirect('/admin/productos')->with('eliminar','ok');
+        return response()->json([
+            'mensaje' => 'Producto eliminado'
+        ]);
+        /*$producto = Producto::find($id);
+        $producto->delete();
+        return redirect('/admin/productos')->with('eliminar','ok');*/
     }
 }

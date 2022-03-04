@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 Route::resource('admin/contactos', 'App\Http\Controllers\ContactoController');
@@ -33,12 +33,10 @@ Route::resource('admin/faqs', 'App\Http\Controllers\FAQController');
 
 Route::resource('admin/categorias', 'App\Http\Controllers\CategoriaController');
 
+Route::resource('admin/usuarios', 'App\Http\Controllers\UsuarioController');
+
 Auth::routes();
 
 Route::get('/home', function () {
     return view('home');
-});
-
-Route::get('/faq', function () {
-    return view('faq');
 });

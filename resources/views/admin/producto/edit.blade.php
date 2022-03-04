@@ -20,8 +20,18 @@
             <input type="text" name="cantidad" class="form-control" value="{{$producto->cantidad}}">
         </div>
         <div class="mb-3">
+            <label for="categoria">Categoria</label>
+            <select name="categoria" class="form-select" aria-label="Default select example">
+                <option selected>Elige una categoria</option>
+                <option value="accion">Accion</option>
+                <option value="terror">Terror</option>
+                <option value="aventura">Aventura</option>
+                <option value="misterio">Misterio</option>
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" class="form-control" value="{{$producto->descripcion}}">
+            <textarea name="descripcion">{{$producto->descripcion}}</textarea>
         </div>
         <div class="mb-3">
             <label for="imagen">Imagen</label>

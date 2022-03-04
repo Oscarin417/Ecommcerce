@@ -6,6 +6,7 @@
 @section('content')
     <form action="/admin/categorias/{{$categoria->id}}" method="POST">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="pregunta" class="form-label">Categoria</label>
             <input type="text" name="categoria" class="form-control" value="{{$categoria->categoria}}">

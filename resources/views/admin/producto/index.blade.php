@@ -12,6 +12,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Cantidad</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Imagen</th>
                 <th scope="col">Acciones</th>
@@ -24,6 +25,7 @@
                  <td>{{$pro->nombre}}</td>
                  <td>${{$pro->precio}}</td>
                  <td>{{$pro->cantidad}}</td>
+                 <td>{{$pro->categoria}}</td>
                  <td>{{$pro->descripcion}}</td>
                  <td><img src="{{asset('storage/'.$pro->imagen)}}" width="33.3%"></td>
                  <td>
