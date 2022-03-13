@@ -1,30 +1,33 @@
 require('./bootstrap');
-require('@fortawesome/fontawesome-free/js/all');
-require('sweetalert2/dist/sweetalert2.all.js');
+require('@fortawesome/fontawesome-free');
+require('sweetalert2/dist/sweetalert2.all');
 window.Swal = require('sweetalert2');
 
-import vue from 'vue';
-window.Vue = vue;
+window.Vue = require('vue').default;
 
-import App from './components/App.vue';
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-//Axios
-import VueAxios from 'vue-axios';
-import axios from 'axios';
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-//Importacion y configuracion de Router
-import VueRouter from 'vue-router';
-import { routes } from './routes';
-import Vue from 'vue';
-Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-});
+Vue.component('app-component', require('./components/App.vue').default);
+Vue.component('home-component', require('./components/Home.vue').default);
+Vue.component('productos-component', require('./components/Productos.vue').default);
+Vue.component('registro-component', require('./components/Registro.vue').default);
+Vue.component('login-component', require('./components/LogIn.vue').default);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
 const app = new Vue({
     el: '#app',
-    router: router,
-    render: h => h(App)
 });

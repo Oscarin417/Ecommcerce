@@ -1,56 +1,53 @@
 <template>
-    <main>
+    <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand">
-                    <img src="https://vuejs.org/images/logo.svg" alt="" width="30" height="24">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="/">Home</router-link>
+                            <a class="nav-link active" href='/'>Home</a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="#">QuienesSomos</router-link>
+                            <a class="nav-link active" href='/quienessomos'>Quienes somos</a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="#">QSM</router-link>
+                            <a class="nav-link active" href='/qsm'>QSM</a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="/productos">Productos</router-link>
+                            <a  class="nav-link active" href="/productos">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="#"><i class="fa-solid fa-cart-shopping"></i></router-link>
+                            <a class="nav-link active" href='#'>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="#">Contacto</router-link>
+                            <a class="nav-link active" href='/contacto'>Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="#">Comentarios</router-link>
+                            <a class="nav-link active" href='/comentarios'>Comentarios</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#">LogIn</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                LogIn
+                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><router-link to="#">Usuarios</router-link></li>
-                                <li><router-link to="#">Empleados</router-link></li>
+                                <li><a class="dropdown-item" href='/empleados/login'>Empleados</a></li>
+                                <li><a class="dropdown-item" href='/usuarios/login'>Clientes</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#">Registro</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Resgistro
+                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><router-link to="#">Usuarios</router-link></li>
-                                <li><router-link to="#">Empleados</router-link></li>
+                                <li><a class="dropdown-item" href='/empleados/register'>Empleados</a></li>
+                                <li><a class="dropdown-item" href='/usuarios/registro'>Clientes</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div>
-            <router-view />
-        </div>
-    </main>
+    </div>
 </template>

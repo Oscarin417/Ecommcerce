@@ -16,8 +16,30 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });
+
+Route::get('/productos', function () {
+    return view('producto');
+});
+
+Route::get('/empleados/login', function () {
+    return view('auth/login');
+});
+
+Route::get('/empleados/register', function () {
+    return view('auth/register');
+});
+
+Route::get('/usuarios/registro', function () {
+    return view('registro');
+});
+
+Route::get('/usuarios/login', function () {
+    return view('login');
+});
+
+Auth::routes();
 
 Route::resource('admin/contactos', 'App\Http\Controllers\ContactoController');
 
@@ -35,8 +57,8 @@ Route::resource('admin/categorias', 'App\Http\Controllers\CategoriaController');
 
 Route::resource('admin/usuarios', 'App\Http\Controllers\UsuarioController');
 
-Auth::routes();
-
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
